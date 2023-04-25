@@ -15,16 +15,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-Bold", size: 30.0)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-SemiBold", size: 18.0)!]
         view.backgroundColor = .white
-        view.addSubview(generatedBranchLink)
-        view.addSubview(branchBadgeImageView)
-        view.addSubview(changeBackgroundColorButton)
-        view.addSubview(buyNowButton)
-        view.addSubview(addToCartButton)
-        view.addSubview(colorBlockPageButton)
-        view.addSubview(readDeepLinkButton)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(generatedBranchLink)
+        contentView.addSubview(branchBadgeImageView)
+        contentView.addSubview(changeBackgroundColorButton)
+        contentView.addSubview(buyNowButton)
+        contentView.addSubview(addToCartButton)
+        contentView.addSubview(colorBlockPageButton)
+        contentView.addSubview(readDeepLinkButton)
         view.addSubview(dimScreen)
         view.addSubview(qrCode)
-        
         
         // Setup TapGestureRecognizer. The ACTION PARAMETER IS NIL since we do not need a
         // selector function. We'll let gestureRecognizer(_:shouldReceive:) do the work.
@@ -113,6 +114,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         lp.addControlParam("$desktop_url", withValue: "http://example.com/desktop")
         lp.addControlParam("$ios_url", withValue: "http://example.com/ios")
         lp.addControlParam("nav_to", withValue: "color_block_page")
+        
+        // "color_block_key" can be set to "red", "green", or "blue"
         lp.addControlParam("color_block_key", withValue: "green")
         
         let message = "This link changes the color block"
@@ -180,7 +183,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private let colors: [UIColor] = [
         .systemRed,
-        .systemBlue,
         .systemCyan,
         .systemMint,
         .systemYellow,
@@ -195,57 +197,74 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        generatedBranchLink.translatesAutoresizingMaskIntoConstraints = false
-        let generatedBranchLinkHorizontalConstraint = NSLayoutConstraint(item: generatedBranchLink, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let generatedBranchLinkVerticalConstraint = NSLayoutConstraint(item: generatedBranchLink, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: view.safeAreaInsets.top + 20)
-        let generatedBranchLinkWidthConstraint = NSLayoutConstraint(item: generatedBranchLink, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: view.frame.size.width - 60)
-        let generatedBranchLinkHeightConstraint = NSLayoutConstraint(item: generatedBranchLink, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 40)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 60),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -8),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -8),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            
+            generatedBranchLink.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -8),
+            generatedBranchLink.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            generatedBranchLink.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            generatedBranchLink.heightAnchor.constraint(equalToConstant: 40),
+            generatedBranchLink.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            
+            branchBadgeImageView.topAnchor.constraint(equalTo: generatedBranchLink.bottomAnchor, constant: 10),
+            branchBadgeImageView.leadingAnchor.constraint(equalTo: generatedBranchLink.leadingAnchor, constant: 30),
+            branchBadgeImageView.widthAnchor.constraint(equalToConstant: 300),
+            branchBadgeImageView.heightAnchor.constraint(equalToConstant: 300),
+            branchBadgeImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            changeBackgroundColorButton.topAnchor.constraint(equalTo: branchBadgeImageView.bottomAnchor, constant: 5),
+            changeBackgroundColorButton.leadingAnchor.constraint(equalTo: generatedBranchLink.leadingAnchor, constant: 0),
+            changeBackgroundColorButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            changeBackgroundColorButton.heightAnchor.constraint(equalToConstant: 55),
+            changeBackgroundColorButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
+            buyNowButton.topAnchor.constraint(equalTo: changeBackgroundColorButton.bottomAnchor, constant: 5),
+            buyNowButton.leadingAnchor.constraint(equalTo: changeBackgroundColorButton.leadingAnchor, constant: 0),
+            buyNowButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            buyNowButton.heightAnchor.constraint(equalToConstant: 55),
+            buyNowButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            addToCartButton.topAnchor.constraint(equalTo: buyNowButton.bottomAnchor, constant: 5),
+            addToCartButton.leadingAnchor.constraint(equalTo: buyNowButton.leadingAnchor, constant: 0),
+            addToCartButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            addToCartButton.heightAnchor.constraint(equalToConstant: 55),
+            addToCartButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            colorBlockPageButton.topAnchor.constraint(equalTo: addToCartButton.bottomAnchor, constant: 5),
+            colorBlockPageButton.leadingAnchor.constraint(equalTo: addToCartButton.leadingAnchor, constant: 0),
+            colorBlockPageButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            colorBlockPageButton.heightAnchor.constraint(equalToConstant: 55),
+            colorBlockPageButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            readDeepLinkButton.topAnchor.constraint(equalTo: colorBlockPageButton.bottomAnchor, constant: 5),
+            readDeepLinkButton.leadingAnchor.constraint(equalTo: colorBlockPageButton.leadingAnchor, constant: 0),
+            readDeepLinkButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            readDeepLinkButton.heightAnchor.constraint(equalToConstant: 55),
+            readDeepLinkButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            readDeepLinkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0.0),
+            readDeepLinkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0.0),
+        ])
         
-        branchBadgeImageView.translatesAutoresizingMaskIntoConstraints = false
-        let branchBadgeImageViewHorizontalConstraint = NSLayoutConstraint(item: branchBadgeImageView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let branchBadgeImageViewVerticalConstraint = NSLayoutConstraint(item: branchBadgeImageView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: generatedBranchLink, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 20)
-        let branchBadgeImageViewWidthConstraint = NSLayoutConstraint(item: branchBadgeImageView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 300)
-        let branchBadgeImageViewHeightConstraint = NSLayoutConstraint(item: branchBadgeImageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 300)
+        setupNavigationMenuButtons()
         
-        changeBackgroundColorButton.translatesAutoresizingMaskIntoConstraints = false
-        let changeBackgroundColorButtonHorizontalConstraint = NSLayoutConstraint(item: changeBackgroundColorButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let changeBackgroundColorButtonVerticalConstraint = NSLayoutConstraint(item: changeBackgroundColorButton, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: branchBadgeImageView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 20)
-        let changeBackgroundColorButtonWidthConstraint = NSLayoutConstraint(item: changeBackgroundColorButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: view.frame.size.width - 60)
-        let changeBackgroundColorButtonHeightConstraint = NSLayoutConstraint(item: changeBackgroundColorButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 55)
-        
-        buyNowButton.translatesAutoresizingMaskIntoConstraints = false
-        let buyNowButtonHorizontalConstraint = NSLayoutConstraint(item: buyNowButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let buyNowButtonVerticalConstraint = NSLayoutConstraint(item: buyNowButton, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: changeBackgroundColorButton, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 5)
-        let buyNowButtonWidthConstraint = NSLayoutConstraint(item: buyNowButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: view.frame.size.width - 60)
-        let buyNowButtonHeightConstraint = NSLayoutConstraint(item: buyNowButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 55)
-        
-        addToCartButton.translatesAutoresizingMaskIntoConstraints = false
-        let addToCartButtonHorizontalConstraint = NSLayoutConstraint(item: addToCartButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let addToCartButtonVerticalConstraint = NSLayoutConstraint(item: addToCartButton, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: buyNowButton, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 5)
-        let addToCartButtonWidthConstraint = NSLayoutConstraint(item: addToCartButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: view.frame.size.width - 60)
-        let addToCartButtonHeightConstraint = NSLayoutConstraint(item: addToCartButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 55)
-        
-        colorBlockPageButton.translatesAutoresizingMaskIntoConstraints = false
-        let colorBlockPageButtonHorizontalConstraint = NSLayoutConstraint(item: colorBlockPageButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let colorBlockPageButtonVerticalConstraint = NSLayoutConstraint(item: colorBlockPageButton, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: addToCartButton, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 5)
-        let colorBlockPageButtonWidthConstraint = NSLayoutConstraint(item: colorBlockPageButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: view.frame.size.width - 60)
-        let colorBlockPageButtonHeightConstraint = NSLayoutConstraint(item: colorBlockPageButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 55)
-        
-        readDeepLinkButton.translatesAutoresizingMaskIntoConstraints = false
-        let readDeepLinkButtonHorizontalConstraint = NSLayoutConstraint(item: readDeepLinkButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let readDeepLinkButtonVerticalConstraint = NSLayoutConstraint(item: readDeepLinkButton, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: colorBlockPageButton, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 5)
-        let readDeepLinkButtonWidthConstraint = NSLayoutConstraint(item: readDeepLinkButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: view.frame.size.width - 60)
-        let readDeepLinkButtonHeightConstraint = NSLayoutConstraint(item: readDeepLinkButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 55)
-        
-        qrCode.translatesAutoresizingMaskIntoConstraints = false
         let qrCodeHorizontalConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
         let qrCodeVerticalConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
         let qrCodeWidthConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 350)
         let qrCodeHeightConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 350)
         
-        self.view.addConstraints([generatedBranchLinkHorizontalConstraint, generatedBranchLinkVerticalConstraint, generatedBranchLinkWidthConstraint, generatedBranchLinkHeightConstraint, branchBadgeImageViewHorizontalConstraint, branchBadgeImageViewVerticalConstraint, branchBadgeImageViewWidthConstraint, branchBadgeImageViewHeightConstraint, changeBackgroundColorButtonHorizontalConstraint, changeBackgroundColorButtonVerticalConstraint, changeBackgroundColorButtonWidthConstraint, changeBackgroundColorButtonHeightConstraint, buyNowButtonHorizontalConstraint, buyNowButtonVerticalConstraint, buyNowButtonWidthConstraint, buyNowButtonHeightConstraint, addToCartButtonHorizontalConstraint, addToCartButtonVerticalConstraint, addToCartButtonWidthConstraint, addToCartButtonHeightConstraint, colorBlockPageButtonHorizontalConstraint, colorBlockPageButtonVerticalConstraint, colorBlockPageButtonWidthConstraint, colorBlockPageButtonHeightConstraint, readDeepLinkButtonHorizontalConstraint, readDeepLinkButtonVerticalConstraint, readDeepLinkButtonWidthConstraint, readDeepLinkButtonHeightConstraint, qrCodeHorizontalConstraint, qrCodeVerticalConstraint, qrCodeWidthConstraint, qrCodeHeightConstraint])
-        
-        setupNavigationMenuButtons()
+        self.view.addConstraints([qrCodeHorizontalConstraint, qrCodeVerticalConstraint, qrCodeWidthConstraint, qrCodeHeightConstraint])
         
         dimScreen.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
     }
@@ -260,6 +279,29 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.rightBarButtonItems = [shareButton, qrCodeButton]
     }
     
+    // ---------- UILabels and UIImages ----------
+    
+    private let generatedBranchLink: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(rgb: 0x1F2852)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.font = UIFont(name: "Raleway-Medium", size: 14)
+        label.layer.borderColor = UIColor(rgb: 0xBCC0D4).cgColor
+        label.layer.borderWidth = 1.5
+        label.layer.cornerRadius = 5
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let branchBadgeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "BranchBadgeDark")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     // ---------- Buttons on the bottom of the page ----------
     
     private lazy var changeBackgroundColorButton: UIButton = {
@@ -271,6 +313,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 27.5
         button.layer.cornerCurve = .continuous
         button.addTarget(self, action: #selector(changeBackgroundColor), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -283,6 +326,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 27.5
         button.layer.cornerCurve = .continuous
         button.addTarget(self, action: #selector(sendPurchaseEvent(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -295,6 +339,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 27.5
         button.layer.cornerCurve = .continuous
         button.addTarget(self, action: #selector(sendAddToCartEvent(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -307,6 +352,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 27.5
         button.layer.cornerCurve = .continuous
         button.addTarget(self, action: #selector(openColorBlockPage(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -319,6 +365,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 27.5
         button.layer.cornerCurve = .continuous
         button.addTarget(self, action: #selector(openReadDeepLinkPage(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -334,36 +381,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.show(readDeepLinkPageController, sender: readDeepLinkButton)
     }
     
-    // ---------- UILabels and UIImages ----------
-    
-    private let generatedBranchLink: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor(rgb: 0x1F2852)
-        label.numberOfLines = 1
-        label.textAlignment = .center
-        label.font = UIFont(name: "Raleway-Medium", size: 14)
-        label.layer.borderColor = UIColor(rgb: 0xBCC0D4).cgColor
-        label.layer.borderWidth = 1.5
-        label.layer.cornerRadius = 5
-        return label
-    }()
-    
-    private let branchBadgeImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        //imageView.backgroundColor = .white
-
-        //let url = URL(string: "https://www.branch.io/wp-content/uploads/2022/12/full-color-badge-1.svg")
-        //let url = URL(string: "https://i.snipboard.io/5PW62T.jpg")
-
-        //let data = try? Data(contentsOf: url!)
-        //imageView.image = UIImage(data: data!)
-        
-        imageView.image = UIImage(named: "BranchBadgeDark")
-    
-        return imageView
-    }()
-    
     // ---------- QR Code Popup Views and Functions ----------
     
     // Dims screen around QR Code
@@ -373,6 +390,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         view.backgroundColor = .black
         view.alpha = 0.5
         view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -381,6 +399,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     private let qrCode: UIView = {
         let view = UIView()
         view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -393,6 +412,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             return false
     }
+    
+    // ---------- ScrollView ----------
+    
+    lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
+    
+    lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
+    }()
 }
 
 // Enables setting colors using hex codes

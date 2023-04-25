@@ -11,9 +11,6 @@ import BranchSDK
 
 @main 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     var window: UIWindow?
     var navigationcontroller: UINavigationController?
     
@@ -22,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //See Branch Logs
         Branch.getInstance().enableLogging()
-        
         
         // This version of initSession includes the source UIScene in the callback
         BranchScene.shared().initSession(launchOptions: launchOptions, registerDeepLinkHandler: { (params, error, scene) in
@@ -36,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let rootViewController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
                     let secondVC = ColorBlockViewController()
                     rootViewController?.pushViewController(secondVC, animated: true)
-                    print("hello we did it")
                 
                 default: break
               }
@@ -48,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // logout
         Branch.getInstance().logout() // or .logoutWithCallback() to customize further
         
-
         return true
     }
     
