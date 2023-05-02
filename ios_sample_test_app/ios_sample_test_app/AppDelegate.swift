@@ -26,22 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let data = params as? [String: AnyObject] else { return }
             
             guard let options = data["nav_to"] as? String else { return }
+            
+            let rootViewController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
+
             switch options {
-                case "color_block_page":
+            case "color_block_page":
+                rootViewController?.pushViewController(ColorBlockViewController(), animated: true)
                 
-                    let rootViewController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
-                    let secondVC = ColorBlockViewController()
-                    rootViewController?.pushViewController(secondVC, animated: true)
+            case "read_deep_link_page":
+                rootViewController?.pushViewController(ReadDeepLinkViewController(), animated: true)
                 
-                default: break
-              }
+            default: break
+            }
         })
         
         // login
         Branch.getInstance().setIdentity("your_user_id")
-
-        // logout
-        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
         
         return true
     }

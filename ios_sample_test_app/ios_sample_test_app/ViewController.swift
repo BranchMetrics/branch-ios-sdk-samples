@@ -79,6 +79,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             "App_Type" : "Ios_Sample_App"
         ]
         event.logEvent()
+        // logout
+        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
+        
         self.showToast(message: "Purchase Event sent!", font: UIFont(name: "Raleway-Regular", size: 16)!)
     }
     
@@ -92,6 +95,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             "App_Type" : "Ios_Sample_App"
         ]
         event.logEvent()
+        
+        // logout
+        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
+        
         self.showToast(message: "Add to Cart event sent!", font: UIFont(name: "Raleway-Regular", size: 16)!)
     }
     
@@ -113,7 +120,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
         lp.addControlParam("$desktop_url", withValue: "http://example.com/desktop")
         lp.addControlParam("$ios_url", withValue: "http://example.com/ios")
+        
+        // Routing to ColorBlockViewController or ReadDeepLinkViewController
         lp.addControlParam("nav_to", withValue: "color_block_page")
+        // lp.addControlParam("nav_to", withValue: "read_deep_link_page")
+
         
         // "color_block_key" can be set to "red", "green", or "blue"
         lp.addControlParam("color_block_key", withValue: "green")
@@ -177,6 +188,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             "App_Type" : "Ios_Sample_App"
         ]
         event.logEvent()
+        
+        // logout
+        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
+        
         self.showToast(message: "Change Background Color Event sent!", font: UIFont(name: "Raleway-Regular", size: 16)!)
         view.backgroundColor = colors.randomElement()
     }
