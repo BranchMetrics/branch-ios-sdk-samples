@@ -26,7 +26,7 @@ class ReadDeepLinkViewController: UIViewController {
         
         self.title = "Read Deep Link Data"
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -49,27 +49,28 @@ class ReadDeepLinkViewController: UIViewController {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -8),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -8),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 330),
             
             readDeepLinkPageDescription.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -8),
             readDeepLinkPageDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            readDeepLinkPageDescription.widthAnchor.constraint(equalToConstant: 330),
+            readDeepLinkPageDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
 
             sessionParameterTitle.topAnchor.constraint(equalTo: readDeepLinkPageDescription.bottomAnchor, constant: 15),
             sessionParameterTitle.leadingAnchor.constraint(equalTo: readDeepLinkPageDescription.leadingAnchor, constant: 0),
+            sessionParameterTitle.trailingAnchor.constraint(equalTo: readDeepLinkPageDescription.leadingAnchor, constant: 150),
             
             sessionParameterText.topAnchor.constraint(equalTo: sessionParameterTitle.bottomAnchor, constant: 5),
             sessionParameterText.leadingAnchor.constraint(equalTo: sessionParameterTitle.leadingAnchor, constant: 0),
-            sessionParameterText.widthAnchor.constraint(equalToConstant: 330),
+            sessionParameterText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             
             installParameterTitle.topAnchor.constraint(equalTo: sessionParameterText.bottomAnchor, constant: 10),
             installParameterTitle.leadingAnchor.constraint(equalTo: sessionParameterText.leadingAnchor, constant: 0),
+            installParameterTitle.trailingAnchor.constraint(equalTo: sessionParameterText.leadingAnchor, constant: 150),
 
             installParameterText.topAnchor.constraint(equalTo: installParameterTitle.bottomAnchor, constant: 5),
             installParameterText.leadingAnchor.constraint(equalTo: installParameterTitle.leadingAnchor, constant: 0),
-            installParameterText.widthAnchor.constraint(equalToConstant: 330),
-            installParameterText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0.0),
             installParameterText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0.0),
+            installParameterText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0.0),
         ])
     
     }
@@ -79,7 +80,7 @@ class ReadDeepLinkViewController: UIViewController {
     private let readDeepLinkPageDescription: UILabel = {
         let label = UILabel()
         label.text = "Session Parameters are determined each time the app is initialized.\n\nInstall Parameters are determined when the app is first installed."
-        label.textColor = UIColor(rgb: 0x04C5478)
+        label.textColor = UIColor(red: 0.30, green: 0.33, blue: 0.47, alpha: 1.00)
         label.font = UIFont(name: "Raleway-Italic", size: 13)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +90,7 @@ class ReadDeepLinkViewController: UIViewController {
     private let sessionParameterTitle: UILabel = {
         let label = UILabel()
         label.text = "Session Parameters"
-        label.textColor = UIColor(rgb: 0x711DF4)
+        label.textColor = UIColor(red: 0.44, green: 0.11, blue: 0.96, alpha: 1.00)
         label.font = UIFont(name: "Raleway-Medium", size: 15)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -99,9 +100,9 @@ class ReadDeepLinkViewController: UIViewController {
     private let sessionParameterText: UILabel = {
         let label = UILabel()
         label.text = "-Session paremeters go here-"
-        label.textColor = UIColor(rgb: 0x4C5478)
+        label.textColor = UIColor(red: 0.30, green: 0.33, blue: 0.47, alpha: 1.00)
         label.font = UIFont(name: "Raleway-Light", size: 13)
-        label.layer.borderColor = UIColor(rgb: 0xBCC0D4).cgColor
+        label.layer.borderColor = UIColor(red: 0.74, green: 0.75, blue: 0.83, alpha: 1.00).cgColor
         label.layer.borderWidth = 1.5
         label.layer.cornerRadius = 5
         label.numberOfLines = 0
@@ -112,7 +113,7 @@ class ReadDeepLinkViewController: UIViewController {
     private let installParameterTitle: UILabel = {
         let label = UILabel()
         label.text = "Install Parameters"
-        label.textColor = UIColor(rgb: 0x711DF4)
+        label.textColor = UIColor(red: 0.44, green: 0.11, blue: 0.96, alpha: 1.00)
         label.font = UIFont(name: "Raleway-Medium", size: 15)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -122,9 +123,9 @@ class ReadDeepLinkViewController: UIViewController {
     private let installParameterText: UILabel = {
         let label = UILabel()
         label.text = "Install Parameters Go Here"
-        label.textColor = UIColor(rgb: 0x4C5478)
+        label.textColor = UIColor(red: 0.30, green: 0.33, blue: 0.47, alpha: 1.00)
         label.font = UIFont(name: "Raleway-Light", size: 13)
-        label.layer.borderColor = UIColor(rgb: 0xBCC0D4).cgColor
+        label.layer.borderColor = UIColor(red: 0.74, green: 0.75, blue: 0.83, alpha: 1.00).cgColor
         label.layer.borderWidth = 1.5
         label.layer.cornerRadius = 5
         label.numberOfLines = 0

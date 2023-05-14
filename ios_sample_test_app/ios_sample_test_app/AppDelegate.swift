@@ -6,8 +6,8 @@
 //
 
 import UIKit
-
 import BranchSDK
+import AppTrackingTransparency
 
 @main 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.requestDataPermission()
+        }
         
         //See Branch Logs
         Branch.getInstance().enableLogging()
@@ -44,6 +48,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Branch.getInstance().setIdentity("your_user_id")
         
         return true
+    }
+    
+    func requestDataPermission() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                switch status {
+                case .authorized:
+                    // Tracking authorization dialog was shown
+                    // and we are authorized
+                    print("Authorized")
+                case .denied:
+                    // Tracking authorization dialog was
+                    // shown and permission is denied
+                    print("Denied")
+                case .notDetermined:
+                    // Tracking authorization dialog has not been shown
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
+                }
+            })
+        } else {
+            // You already have permission to track, iOS 14 is not yet installed
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

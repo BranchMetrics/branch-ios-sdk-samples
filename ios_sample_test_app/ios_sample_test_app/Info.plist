@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Asking permission to send device level information to Branch Dashboard.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>io.branch.Brandon-Boothe</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>branchsampleapp</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Raleway-BoldItalic.ttf</string>
@@ -15,33 +30,6 @@
 		<string>Raleway-Bold.ttf</string>
 		<string>Raleway-Medium.ttf</string>
 	</array>
-	<key>branch_universal_link_domains</key>
-	<array>
-		<string>brandonboothe.app.link</string>
-		<string>brandonboothe-alternate.app.link</string>
-		<string>brandonboothe.test-app.link</string>
-		<string>brandonboothe-alternate.test-app.link</string>
-	</array>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>iostestsampleapp</string>
-			</array>
-			<key>CFBundleURLName</key>
-			<string>io.branch.Brandon-Boothe</string>
-		</dict>
-	</array>
-	<key>branch_key</key>
-	<dict>
-		<key>live</key>
-		<string>key_live_pfXRGHm8v4dqw6tUDF2e3ekctxlbGz8U</string>
-		<key>test</key>
-		<string>key_test_fo4IPGcZy1gDx4qLtz3rpbabrwemRA69</string>
-	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -61,5 +49,19 @@
 			</array>
 		</dict>
 	</dict>
+	<key>branch_key</key>
+	<dict>
+		<key>live</key>
+		<string>key_live_dh1ZXXkeXYQVs5dtp0JaFokptspY4lz5</string>
+		<key>test</key>
+		<string>key_test_cm0794ba2WGPEYaAh8G8nhjfxvpZYeNk</string>
+	</dict>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>branchsampleapps.app.link</string>
+		<string>branchsampleapps-alternate.app.link</string>
+		<string>branchsampleapps.test-app.link</string>
+		<string>branchsampleapps-alternate.test-app.link</string>
+	</array>
 </dict>
 </plist>

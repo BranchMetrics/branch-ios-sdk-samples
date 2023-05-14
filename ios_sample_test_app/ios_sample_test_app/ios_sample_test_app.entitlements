@@ -4,10 +4,10 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:brandonboothe.app.link</string>
-		<string>applinks:brandonboothe-alternate.app.link</string>
-		<string>applinks:brandonboothe.test-app.link</string>
-		<string>applinks:brandonboothe-alternate.test-app.link</string>
+		<string>applinks:branchsampleapps-alternate.app.link</string>
+		<string>applinks:branchsampleapps.app.link</string>
+		<string>applinks:branchsampleapps.test-app.link</string>
+		<string>applinks:branchsampleapps-alternate.test-app.link</string>
 	</array>
 </dict>
 </plist>

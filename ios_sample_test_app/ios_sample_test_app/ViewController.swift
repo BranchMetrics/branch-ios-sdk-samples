@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-Bold", size: 30.0)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-SemiBold", size: 18.0)!]
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(generatedBranchLink)
@@ -39,29 +39,42 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // ---------- Branch SDK Functions ----------
     
-    func createBranchLink() {
-        let buo = BranchUniversalObject.init(canonicalIdentifier: "context/12345")
+    func createBranchUniversalObject() -> BranchUniversalObject {
+        let buo = BranchUniversalObject(canonicalIdentifier: "context/23456")
         buo.title = "My Content Title"
         buo.contentDescription = "My Content Description"
         buo.imageUrl = "https://lorempixel.com/400/400"
         buo.publiclyIndex = true
         buo.locallyIndex = true
         buo.contentMetadata.customMetadata["key1"] = "value1"
-        
+        return buo
+    }
+    
+    func createBranchLinkProperties() -> BranchLinkProperties {
         let lp: BranchLinkProperties = BranchLinkProperties()
         lp.channel = "facebook"
         lp.feature = "sharing"
         lp.campaign = "content 123 launch"
         lp.stage = "new user"
         lp.tags = ["one", "two", "three"]
-
+        
+        lp.addControlParam("custom_data", withValue: "Custom Data Here")
         lp.addControlParam("$desktop_url", withValue: "http://example.com/desktop")
         lp.addControlParam("$ios_url", withValue: "http://example.com/ios")
-        lp.addControlParam("$ipad_url", withValue: "http://example.com/ios")
-        lp.addControlParam("$android_url", withValue: "http://example.com/android")
-        lp.addControlParam("$match_duration", withValue: "2000")
-
-        lp.addControlParam("custom_data", withValue: "yes")
+        
+        // Routing to ColorBlockViewController or ReadDeepLinkViewController
+        lp.addControlParam("nav_to", withValue: "color_block_page")
+        // lp.addControlParam("nav_to", withValue: "read_deep_link_page")
+        
+        // "color_block_key" can be set to "red", "green", or "blue"
+        lp.addControlParam("color_block_key", withValue: "green")
+        
+        return lp
+    }
+    
+    func createBranchLink() {
+        let buo = createBranchUniversalObject()
+        let lp = createBranchLinkProperties()
         
         buo.getShortUrl(with: lp) { url, error in
             print(url ?? "")
@@ -79,8 +92,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             "App_Type" : "Ios_Sample_App"
         ]
         event.logEvent()
-        // logout
-        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
         
         self.showToast(message: "Purchase Event sent!", font: UIFont(name: "Raleway-Regular", size: 16)!)
     }
@@ -96,38 +107,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         ]
         event.logEvent()
         
-        // logout
-        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
-        
         self.showToast(message: "Add to Cart event sent!", font: UIFont(name: "Raleway-Regular", size: 16)!)
     }
     
     @objc func shareBranchLink() {
-        let buo = BranchUniversalObject.init(canonicalIdentifier: "context/23456")
-        buo.title = "My Content Title"
-        buo.contentDescription = "My Content Description"
-        buo.imageUrl = "https://lorempixel.com/400/400"
-        buo.publiclyIndex = true
-        buo.locallyIndex = true
-        buo.contentMetadata.customMetadata["key1"] = "value1"
-        
-        let lp: BranchLinkProperties = BranchLinkProperties()
-        lp.channel = "facebook"
-        lp.feature = "sharing"
-        lp.campaign = "content 123 launch"
-        lp.stage = "new user"
-        lp.tags = ["one", "two", "three"]
-
-        lp.addControlParam("$desktop_url", withValue: "http://example.com/desktop")
-        lp.addControlParam("$ios_url", withValue: "http://example.com/ios")
-        
-        // Routing to ColorBlockViewController or ReadDeepLinkViewController
-        lp.addControlParam("nav_to", withValue: "color_block_page")
-        // lp.addControlParam("nav_to", withValue: "read_deep_link_page")
-
-        
-        // "color_block_key" can be set to "red", "green", or "blue"
-        lp.addControlParam("color_block_key", withValue: "green")
+        let buo = createBranchUniversalObject()
+        let lp = createBranchLinkProperties()
         
         let message = "This link changes the color block"
         buo.showShareSheet(with: lp, andShareText: message, from: self) { (activityType, completed) in
@@ -136,23 +121,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func createQRCode() {
-        let buo = BranchUniversalObject.init(canonicalIdentifier: "context/23456")
-        buo.title = "My Content Title"
-        buo.contentDescription = "My Content Description"
-        buo.imageUrl = "https://lorempixel.com/400/400"
-        buo.publiclyIndex = true
-        buo.locallyIndex = true
-        buo.contentMetadata.customMetadata["key1"] = "value1"
-        
-        let lp: BranchLinkProperties = BranchLinkProperties()
-        lp.channel = "facebook"
-        lp.feature = "sharing"
-        lp.campaign = "content 123 launch"
-        lp.stage = "new user"
-        lp.tags = ["one", "two", "three"]
-
-        lp.addControlParam("$desktop_url", withValue: "http://example.com/desktop")
-        lp.addControlParam("$ios_url", withValue: "http://example.com/ios")
+        let buo = createBranchUniversalObject()
+        let lp = createBranchLinkProperties()
         
         let qrCode = BranchQRCode()
         qrCode.codeColor = UIColor.white
@@ -163,7 +133,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         qrCode.imageFormat = .JPEG
         
         qrCode.getAsImage(buo, linkProperties: lp) { qrCodeImage, error in
-            //Do something with your QR code here...
+            // Checking for error prior to initializing QR Code
+            if (error != nil) {
+                print(error as Any)
+                return
+            }
+            
+            // Do something with your QR code here...
             DispatchQueue.main.async {
                 self.qrCode.backgroundColor = UIColor(patternImage: qrCodeImage!)
             }
@@ -188,9 +164,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             "App_Type" : "Ios_Sample_App"
         ]
         event.logEvent()
-        
-        // logout
-        Branch.getInstance().logout() // or .logoutWithCallback() to customize further
         
         self.showToast(message: "Change Background Color Event sent!", font: UIFont(name: "Raleway-Regular", size: 16)!)
         view.backgroundColor = colors.randomElement()
@@ -227,59 +200,49 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             
             generatedBranchLink.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -8),
             generatedBranchLink.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            generatedBranchLink.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
-            generatedBranchLink.heightAnchor.constraint(equalToConstant: 40),
-            generatedBranchLink.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            generatedBranchLink.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0.0),
+            generatedBranchLink.heightAnchor.constraint(equalToConstant: 33),
 
-            
             branchBadgeImageView.topAnchor.constraint(equalTo: generatedBranchLink.bottomAnchor, constant: 10),
-            branchBadgeImageView.leadingAnchor.constraint(equalTo: generatedBranchLink.leadingAnchor, constant: 30),
+            branchBadgeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             branchBadgeImageView.widthAnchor.constraint(equalToConstant: 300),
             branchBadgeImageView.heightAnchor.constraint(equalToConstant: 300),
-            branchBadgeImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             changeBackgroundColorButton.topAnchor.constraint(equalTo: branchBadgeImageView.bottomAnchor, constant: 5),
             changeBackgroundColorButton.leadingAnchor.constraint(equalTo: generatedBranchLink.leadingAnchor, constant: 0),
-            changeBackgroundColorButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            changeBackgroundColorButton.trailingAnchor.constraint(equalTo: generatedBranchLink.trailingAnchor, constant: 0),
             changeBackgroundColorButton.heightAnchor.constraint(equalToConstant: 55),
-            changeBackgroundColorButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             buyNowButton.topAnchor.constraint(equalTo: changeBackgroundColorButton.bottomAnchor, constant: 5),
             buyNowButton.leadingAnchor.constraint(equalTo: changeBackgroundColorButton.leadingAnchor, constant: 0),
-            buyNowButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            buyNowButton.trailingAnchor.constraint(equalTo: changeBackgroundColorButton.trailingAnchor, constant: 0),
             buyNowButton.heightAnchor.constraint(equalToConstant: 55),
-            buyNowButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             addToCartButton.topAnchor.constraint(equalTo: buyNowButton.bottomAnchor, constant: 5),
             addToCartButton.leadingAnchor.constraint(equalTo: buyNowButton.leadingAnchor, constant: 0),
-            addToCartButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            addToCartButton.trailingAnchor.constraint(equalTo: buyNowButton.trailingAnchor, constant: 0),
             addToCartButton.heightAnchor.constraint(equalToConstant: 55),
-            addToCartButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             colorBlockPageButton.topAnchor.constraint(equalTo: addToCartButton.bottomAnchor, constant: 5),
             colorBlockPageButton.leadingAnchor.constraint(equalTo: addToCartButton.leadingAnchor, constant: 0),
-            colorBlockPageButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            colorBlockPageButton.trailingAnchor.constraint(equalTo: addToCartButton.trailingAnchor, constant: 0),
             colorBlockPageButton.heightAnchor.constraint(equalToConstant: 55),
-            colorBlockPageButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             readDeepLinkButton.topAnchor.constraint(equalTo: colorBlockPageButton.bottomAnchor, constant: 5),
             readDeepLinkButton.leadingAnchor.constraint(equalTo: colorBlockPageButton.leadingAnchor, constant: 0),
-            readDeepLinkButton.widthAnchor.constraint(equalToConstant: view.frame.size.width - 60),
+            readDeepLinkButton.trailingAnchor.constraint(equalTo: colorBlockPageButton.trailingAnchor, constant: 0),
             readDeepLinkButton.heightAnchor.constraint(equalToConstant: 55),
-            readDeepLinkButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            readDeepLinkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0.0),
-            readDeepLinkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0.0),
+            readDeepLinkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0.0)
         ])
         
         setupNavigationMenuButtons()
         
-        let qrCodeHorizontalConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
         let qrCodeVerticalConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-        let qrCodeWidthConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 350)
+        let qrCodeLeadingConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 20)
+        let qrCodeTrailingConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: -20)
         let qrCodeHeightConstraint = NSLayoutConstraint(item: qrCode, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 350)
-        
-        self.view.addConstraints([qrCodeHorizontalConstraint, qrCodeVerticalConstraint, qrCodeWidthConstraint, qrCodeHeightConstraint])
+        self.view.addConstraints([qrCodeVerticalConstraint, qrCodeLeadingConstraint, qrCodeTrailingConstraint, qrCodeHeightConstraint])
         
         dimScreen.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
     }
@@ -296,17 +259,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // ---------- UILabels and UIImages ----------
     
-    private let generatedBranchLink: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor(rgb: 0x1F2852)
-        label.numberOfLines = 1
-        label.textAlignment = .center
-        label.font = UIFont(name: "Raleway-Medium", size: 14)
-        label.layer.borderColor = UIColor(rgb: 0xBCC0D4).cgColor
-        label.layer.borderWidth = 1.5
-        label.layer.cornerRadius = 5
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private let generatedBranchLink: UITextView = {
+        let textView = UITextView()
+        textView.textColor = UIColor(red: 0.12, green: 0.16, blue: 0.32, alpha: 1.00)
+        textView.textContainer.maximumNumberOfLines = 1
+        textView.textContainer.lineBreakMode = .byTruncatingTail
+        textView.textContainer.lineFragmentPadding = 0;
+        textView.textAlignment = .center
+        textView.font = UIFont(name: "Raleway-Medium", size: 14)
+        textView.layer.borderColor = UIColor(red: 0.74, green: 0.75, blue: 0.83, alpha: 1.00).cgColor
+        textView.layer.borderWidth = 1.5
+        textView.layer.cornerRadius = 5
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
     
     private let branchBadgeImageView: UIImageView = {
@@ -319,70 +284,48 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // ---------- Buttons on the bottom of the page ----------
     
-    private lazy var changeBackgroundColorButton: UIButton = {
+    func createButton(buttonTitle: String) -> UIButton {
         let button = UIButton()
-        button.backgroundColor = UIColor(rgb: 0x0074DF)
-        button.setTitle("Change Background Color", for: .normal)
+        button.backgroundColor = UIColor(red: 0.00, green: 0.45, blue: 0.87, alpha: 1.00)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 20)
         button.layer.cornerRadius = 27.5
         button.layer.cornerCurve = .continuous
-        button.addTarget(self, action: #selector(changeBackgroundColor), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        switch buttonTitle {
+        case "Change Background Color":
+            button.setTitle("Change Background Color", for: .normal)
+            button.addTarget(self, action: #selector(changeBackgroundColor), for: .touchUpInside)
+            
+        case "Buy Now":
+            button.setTitle("Buy Now", for: .normal)
+            button.addTarget(self, action: #selector(sendPurchaseEvent(_:)), for: .touchUpInside)
+            
+        case "Add To Cart":
+            button.setTitle("Add To Cart", for: .normal)
+            button.addTarget(self, action: #selector(sendAddToCartEvent(_:)), for: .touchUpInside)
+            
+        case "Color Block Page":
+            button.setTitle("Color Block Page", for: .normal)
+            button.addTarget(self, action: #selector(openColorBlockPage(_:)), for: .touchUpInside)
+            
+        case "Read Link Data":
+            button.setTitle("Read Link Data", for: .normal)
+            button.addTarget(self, action: #selector(openReadDeepLinkPage(_:)), for: .touchUpInside)
+            
+        default:
+            print("Button not defined.")
+        }
+        
         return button
-    }()
+    }
     
-    private lazy var buyNowButton: UIButton = {
-       let button = UIButton()
-        button.backgroundColor = UIColor(rgb: 0x0074DF)
-        button.setTitle("Buy Now", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 20)
-        button.layer.cornerRadius = 27.5
-        button.layer.cornerCurve = .continuous
-        button.addTarget(self, action: #selector(sendPurchaseEvent(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var addToCartButton: UIButton = {
-       let button = UIButton()
-        button.backgroundColor = UIColor(rgb: 0x0074DF)
-        button.setTitle("Add To Cart", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 20)
-        button.layer.cornerRadius = 27.5
-        button.layer.cornerCurve = .continuous
-        button.addTarget(self, action: #selector(sendAddToCartEvent(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var colorBlockPageButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(rgb: 0x0074DF)
-        button.setTitle("Color Block Page", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 20)
-        button.layer.cornerRadius = 27.5
-        button.layer.cornerCurve = .continuous
-        button.addTarget(self, action: #selector(openColorBlockPage(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var readDeepLinkButton: UIButton = {
-       let button = UIButton()
-        button.backgroundColor = UIColor(rgb: 0x0074DF)
-        button.setTitle("Read Link Data", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 20)
-        button.layer.cornerRadius = 27.5
-        button.layer.cornerCurve = .continuous
-        button.addTarget(self, action: #selector(openReadDeepLinkPage(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private lazy var changeBackgroundColorButton = createButton(buttonTitle: "Change Background Color")
+    private lazy var buyNowButton = createButton(buttonTitle: "Buy Now")
+    private lazy var addToCartButton = createButton(buttonTitle: "Add To Cart")
+    private lazy var colorBlockPageButton = createButton(buttonTitle: "Color Block Page")
+    private lazy var readDeepLinkButton = createButton(buttonTitle: "Read Link Data")
     
     // ---------- Navigation Functions ----------
     
@@ -441,26 +384,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-}
-
-// Enables setting colors using hex codes
-
-extension UIColor {
-   convenience init(red: Int, green: Int, blue: Int) {
-       assert(red >= 0 && red <= 255, "Invalid red component")
-       assert(green >= 0 && green <= 255, "Invalid green component")
-       assert(blue >= 0 && blue <= 255, "Invalid blue component")
-
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-   }
-
-   convenience init(rgb: Int) {
-       self.init(
-           red: (rgb >> 16) & 0xFF,
-           green: (rgb >> 8) & 0xFF,
-           blue: rgb & 0xFF
-       )
-   }
 }
 
 // Enables sending toast messages
