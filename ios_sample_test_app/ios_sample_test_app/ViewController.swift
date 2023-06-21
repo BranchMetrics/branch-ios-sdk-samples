@@ -15,6 +15,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-Bold", size: 30.0)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-SemiBold", size: 18.0)!]
         view.backgroundColor = .systemBackground
+        
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                generatedBranchLink.textColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
+            }
+        }
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(generatedBranchLink)
@@ -204,7 +211,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             generatedBranchLink.heightAnchor.constraint(equalToConstant: 33),
 
             branchBadgeImageView.topAnchor.constraint(equalTo: generatedBranchLink.bottomAnchor, constant: 10),
-            branchBadgeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            branchBadgeImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             branchBadgeImageView.widthAnchor.constraint(equalToConstant: 300),
             branchBadgeImageView.heightAnchor.constraint(equalToConstant: 300),
 

@@ -28,6 +28,17 @@ class ReadDeepLinkViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
         
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                readDeepLinkPageDescription.textColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
+                sessionParameterTitle.textColor = UIColor(red: 1.00, green: 0.84, blue: 0.00, alpha: 1.00)
+                sessionParameterText.textColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
+                installParameterTitle.textColor = UIColor(red: 1.00, green: 0.84, blue: 0.00, alpha: 1.00)
+                installParameterText.textColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
+
+            }
+        }
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(readDeepLinkPageDescription)
@@ -51,7 +62,7 @@ class ReadDeepLinkViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
             contentView.trailingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 330),
             
-            readDeepLinkPageDescription.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -8),
+            readDeepLinkPageDescription.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -10),
             readDeepLinkPageDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             readDeepLinkPageDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
 
@@ -81,7 +92,7 @@ class ReadDeepLinkViewController: UIViewController {
         let label = UILabel()
         label.text = "Session Parameters are determined each time the app is initialized.\n\nInstall Parameters are determined when the app is first installed."
         label.textColor = UIColor(red: 0.30, green: 0.33, blue: 0.47, alpha: 1.00)
-        label.font = UIFont(name: "Raleway-Italic", size: 13)
+        label.font = UIFont(name: "Raleway-Italic", size: 16)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

@@ -36,6 +36,14 @@ class ColorBlockViewController: UIViewController {
         
         self.title = "Color Block Routing"
         view.backgroundColor = .systemBackground
+        
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                colorBlockPageDescription.textColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
+                colorBlockColorDescription.textColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
+            }
+        }
+        
         view.addSubview(colorBlockPageDescription)
         view.addSubview(colorBlock)
         view.addSubview(colorBlockColorDescription)
@@ -45,7 +53,7 @@ class ColorBlockViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         colorBlockPageDescription.translatesAutoresizingMaskIntoConstraints = false
-        let colorBlockPageDescriptionVerticalConstraint = NSLayoutConstraint(item: colorBlockPageDescription, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 135)
+        let colorBlockPageDescriptionVerticalConstraint = NSLayoutConstraint(item: colorBlockPageDescription, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 155)
         let colorBlockPageDescriptionLeadingConstraint = NSLayoutConstraint(item: colorBlockPageDescription, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 40)
         let colorBlockPageDescriptionTrailingConstraint = NSLayoutConstraint(item: colorBlockPageDescription, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: -40)
         let colorBlockPageDescriptionHeightConstraint = NSLayoutConstraint(item: colorBlockPageDescription, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 100)
@@ -71,7 +79,7 @@ class ColorBlockViewController: UIViewController {
         let label = UILabel()
         label.text = "The default color of the block is white. When this page opens via deep link with a specified \"blockColor\" parameter, the block changes to the specified color."
         label.textColor = UIColor(red: 0.30, green: 0.33, blue: 0.47, alpha: 1.00)
-        label.font = UIFont(name: "Raleway-Italic", size: 13)
+        label.font = UIFont(name: "Raleway-Italic", size: 16)
         label.numberOfLines = 0
         return label
     }()
