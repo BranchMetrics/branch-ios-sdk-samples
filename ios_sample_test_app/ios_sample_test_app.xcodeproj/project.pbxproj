@@ -479,6 +479,7 @@
 				DEVELOPMENT_TEAM = R63EM248DP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ios_sample_test_app/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Asking permission to send device level information to Branch Dashboard.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -489,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.Brandon-Boothe";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchsample-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -508,6 +509,7 @@
 				DEVELOPMENT_TEAM = R63EM248DP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ios_sample_test_app/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Asking permission to send device level information to Branch Dashboard.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -518,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.Brandon-Boothe";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchsample-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
