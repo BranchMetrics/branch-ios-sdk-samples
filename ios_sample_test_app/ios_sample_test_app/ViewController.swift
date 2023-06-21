@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Raleway-SemiBold", size: 18.0)!]
         view.backgroundColor = .systemBackground
         
+        // Checks if phone is in dark mode and modifies color of text for increased visibility
+
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 generatedBranchLink.textColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)

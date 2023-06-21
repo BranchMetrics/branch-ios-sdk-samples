@@ -28,6 +28,8 @@ class ReadDeepLinkViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
         
+        // Checks if phone is in dark mode and modifies color of text for increased visibility
+    
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 readDeepLinkPageDescription.textColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
