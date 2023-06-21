@@ -10,7 +10,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>io.branch.Brandon-Boothe</string>
+			<string>io.branch.branchsample-ios</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>branchsampleapp</string>
