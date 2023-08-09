@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B5168BD29CD1AA6001C1741 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5168BC29CD1AA6001C1741 /* AppDelegate.swift */; };
+		3B5168BF29CD1AA6001C1741 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5168BE29CD1AA6001C1741 /* SceneDelegate.swift */; };
+		3B5168C129CD1AA6001C1741 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5168C029CD1AA6001C1741 /* ViewController.swift */; };
+		3B5168C429CD1AA6001C1741 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5168C229CD1AA6001C1741 /* Main.storyboard */; };
+		3B5168C629CD1AA7001C1741 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5168C529CD1AA7001C1741 /* Assets.xcassets */; };
+		3B5168C929CD1AA7001C1741 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5168C729CD1AA7001C1741 /* LaunchScreen.storyboard */; };
+		3B5168D129CD3E64001C1741 /* ios_sample_test_app.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 3B5168D029CD3E09001C1741 /* ios_sample_test_app.entitlements */; };
+		3B76602029CD42FD00978C92 /* BranchSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3B76601F29CD42FD00978C92 /* BranchSDK */; };
+		3BC933A729CD4556000B4AA6 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933A629CD4556000B4AA6 /* iAd.framework */; };
+		3BC933A929CD4560000B4AA6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933A829CD4560000B4AA6 /* WebKit.framework */; };
+		3BC933AB29CD4566000B4AA6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933AA29CD4566000B4AA6 /* CoreTelephony.framework */; };
+		3BC933AD29CD456E000B4AA6 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933AC29CD456E000B4AA6 /* CoreSpotlight.framework */; };
+		3BC933AF29CD4575000B4AA6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933AE29CD4575000B4AA6 /* SystemConfiguration.framework */; };
+		3BC933B129CD457C000B4AA6 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933B029CD457C000B4AA6 /* CoreServices.framework */; };
+		3BC933B329CD4583000B4AA6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933B229CD4583000B4AA6 /* AdSupport.framework */; };
+		3BC933B529CD4589000B4AA6 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC933B429CD4589000B4AA6 /* AdServices.framework */; };
+		3BC933B729DA220B000B4AA6 /* ColorBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC933B629DA220B000B4AA6 /* ColorBlockViewController.swift */; };
+		3BC933B929DA2381000B4AA6 /* ReadDeepLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC933B829DA2381000B4AA6 /* ReadDeepLinkViewController.swift */; };
+		3BC9341629DAA5BF000B4AA6 /* Raleway-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340029DAA5BF000B4AA6 /* Raleway-BoldItalic.ttf */; };
+		3BC9341729DAA5BF000B4AA6 /* Raleway-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340129DAA5BF000B4AA6 /* Raleway-MediumItalic.ttf */; };
+		3BC9341829DAA5BF000B4AA6 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340229DAA5BF000B4AA6 /* Raleway-ThinItalic.ttf */; };
+		3BC9341929DAA5BF000B4AA6 /* Raleway-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340329DAA5BF000B4AA6 /* Raleway-ExtraLight.ttf */; };
+		3BC9341A29DAA5BF000B4AA6 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340429DAA5BF000B4AA6 /* Raleway-Medium.ttf */; };
+		3BC9341B29DAA5BF000B4AA6 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340529DAA5BF000B4AA6 /* Raleway-SemiBold.ttf */; };
+		3BC9341C29DAA5BF000B4AA6 /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340629DAA5BF000B4AA6 /* Raleway-ExtraBold.ttf */; };
+		3BC9341D29DAA5BF000B4AA6 /* Raleway-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340729DAA5BF000B4AA6 /* Raleway-ExtraBoldItalic.ttf */; };
+		3BC9341F29DAA5BF000B4AA6 /* Raleway-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340929DAA5BF000B4AA6 /* Raleway-ExtraLightItalic.ttf */; };
+		3BC9342029DAA5BF000B4AA6 /* Raleway-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340A29DAA5BF000B4AA6 /* Raleway-SemiBoldItalic.ttf */; };
+		3BC9342129DAA5BF000B4AA6 /* Raleway-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340B29DAA5BF000B4AA6 /* Raleway-Italic-VariableFont_wght.ttf */; };
+		3BC9342229DAA5BF000B4AA6 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340C29DAA5BF000B4AA6 /* Raleway-Light.ttf */; };
+		3BC9342329DAA5BF000B4AA6 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340D29DAA5BF000B4AA6 /* Raleway-Black.ttf */; };
+		3BC9342429DAA5BF000B4AA6 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340E29DAA5BF000B4AA6 /* OFL.txt */; };
+		3BC9342529DAA5BF000B4AA6 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9340F29DAA5BF000B4AA6 /* Raleway-BlackItalic.ttf */; };
+		3BC9342629DAA5BF000B4AA6 /* Raleway-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9341029DAA5BF000B4AA6 /* Raleway-VariableFont_wght.ttf */; };
+		3BC9342729DAA5BF000B4AA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9341129DAA5BF000B4AA6 /* README.txt */; };
+		3BC9342829DAA5BF000B4AA6 /* Raleway-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9341229DAA5BF000B4AA6 /* Raleway-LightItalic.ttf */; };
+		3BC9342929DAA5BF000B4AA6 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9341329DAA5BF000B4AA6 /* Raleway-Thin.ttf */; };
+		3BC9342A29DAA5BF000B4AA6 /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9341429DAA5BF000B4AA6 /* Raleway-Italic.ttf */; };
+		3BC9342B29DAA5BF000B4AA6 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9341529DAA5BF000B4AA6 /* Raleway-Bold.ttf */; };
+		3BC9342F29DAA8EA000B4AA6 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9342E29DAA8EA000B4AA6 /* Raleway-Regular.ttf */; };
+		3BC9343429DE7C02000B4AA6 /* shareout.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9343229DE7C02000B4AA6 /* shareout.png */; };
+		3BC9343929DE7F71000B4AA6 /* scan-barcode.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC9343829DE7F71000B4AA6 /* scan-barcode.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B5168B929CD1AA6001C1741 /* ios_sample_test_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_sample_test_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5168BC29CD1AA6001C1741 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B5168BE29CD1AA6001C1741 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3B5168C029CD1AA6001C1741 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B5168C329CD1AA6001C1741 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B5168C529CD1AA7001C1741 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B5168C829CD1AA7001C1741 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B5168CA29CD1AA7001C1741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B5168D029CD3E09001C1741 /* ios_sample_test_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios_sample_test_app.entitlements; sourceTree = "<group>"; };
+		3BC933A629CD4556000B4AA6 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		3BC933A829CD4560000B4AA6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3BC933AA29CD4566000B4AA6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3BC933AC29CD456E000B4AA6 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		3BC933AE29CD4575000B4AA6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3BC933B029CD457C000B4AA6 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		3BC933B229CD4583000B4AA6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3BC933B429CD4589000B4AA6 /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
+		3BC933B629DA220B000B4AA6 /* ColorBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlockViewController.swift; sourceTree = "<group>"; };
+		3BC933B829DA2381000B4AA6 /* ReadDeepLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDeepLinkViewController.swift; sourceTree = "<group>"; };
+		3BC9340029DAA5BF000B4AA6 /* Raleway-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BoldItalic.ttf"; sourceTree = "<group>"; };
+		3BC9340129DAA5BF000B4AA6 /* Raleway-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-MediumItalic.ttf"; sourceTree = "<group>"; };
+		3BC9340229DAA5BF000B4AA6 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
+		3BC9340329DAA5BF000B4AA6 /* Raleway-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLight.ttf"; sourceTree = "<group>"; };
+		3BC9340429DAA5BF000B4AA6 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
+		3BC9340529DAA5BF000B4AA6 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		3BC9340629DAA5BF000B4AA6 /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
+		3BC9340729DAA5BF000B4AA6 /* Raleway-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		3BC9340929DAA5BF000B4AA6 /* Raleway-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		3BC9340A29DAA5BF000B4AA6 /* Raleway-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		3BC9340B29DAA5BF000B4AA6 /* Raleway-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		3BC9340C29DAA5BF000B4AA6 /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		3BC9340D29DAA5BF000B4AA6 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
+		3BC9340E29DAA5BF000B4AA6 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		3BC9340F29DAA5BF000B4AA6 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
+		3BC9341029DAA5BF000B4AA6 /* Raleway-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		3BC9341129DAA5BF000B4AA6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		3BC9341229DAA5BF000B4AA6 /* Raleway-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-LightItalic.ttf"; sourceTree = "<group>"; };
+		3BC9341329DAA5BF000B4AA6 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
+		3BC9341429DAA5BF000B4AA6 /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
+		3BC9341529DAA5BF000B4AA6 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		3BC9342E29DAA8EA000B4AA6 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		3BC9343229DE7C02000B4AA6 /* shareout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareout.png; sourceTree = "<group>"; };
+		3BC9343829DE7F71000B4AA6 /* scan-barcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan-barcode.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B5168B629CD1AA6001C1741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BC933B529CD4589000B4AA6 /* AdServices.framework in Frameworks */,
+				3BC933B329CD4583000B4AA6 /* AdSupport.framework in Frameworks */,
+				3BC933B129CD457C000B4AA6 /* CoreServices.framework in Frameworks */,
+				3BC933AF29CD4575000B4AA6 /* SystemConfiguration.framework in Frameworks */,
+				3BC933AD29CD456E000B4AA6 /* CoreSpotlight.framework in Frameworks */,
+				3BC933AB29CD4566000B4AA6 /* CoreTelephony.framework in Frameworks */,
+				3BC933A929CD4560000B4AA6 /* WebKit.framework in Frameworks */,
+				3BC933A729CD4556000B4AA6 /* iAd.framework in Frameworks */,
+				3B76602029CD42FD00978C92 /* BranchSDK in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B5168B029CD1AA6001C1741 = {
+			isa = PBXGroup;
+			children = (
+				3B5168BB29CD1AA6001C1741 /* ios_sample_test_app */,
+				3B5168BA29CD1AA6001C1741 /* Products */,
+				9BB67F7BA50C72BFE4488F08 /* Pods */,
+				754CBDFD66C6B22A56A41C13 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3B5168BA29CD1AA6001C1741 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B5168B929CD1AA6001C1741 /* ios_sample_test_app.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B5168BB29CD1AA6001C1741 /* ios_sample_test_app */ = {
+			isa = PBXGroup;
+			children = (
+				3BC933BA29DA94D5000B4AA6 /* Resources */,
+				3B5168D029CD3E09001C1741 /* ios_sample_test_app.entitlements */,
+				3B5168BC29CD1AA6001C1741 /* AppDelegate.swift */,
+				3B5168BE29CD1AA6001C1741 /* SceneDelegate.swift */,
+				3B5168C029CD1AA6001C1741 /* ViewController.swift */,
+				3BC933B629DA220B000B4AA6 /* ColorBlockViewController.swift */,
+				3BC933B829DA2381000B4AA6 /* ReadDeepLinkViewController.swift */,
+				3B5168C229CD1AA6001C1741 /* Main.storyboard */,
+				3B5168C529CD1AA7001C1741 /* Assets.xcassets */,
+				3B5168C729CD1AA7001C1741 /* LaunchScreen.storyboard */,
+				3B5168CA29CD1AA7001C1741 /* Info.plist */,
+			);
+			path = ios_sample_test_app;
+			sourceTree = "<group>";
+		};
+		3BC933BA29DA94D5000B4AA6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3BC9343129DE7C02000B4AA6 /* Images */,
+				3BC933FF29DAA5BF000B4AA6 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3BC933FF29DAA5BF000B4AA6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3BC9340029DAA5BF000B4AA6 /* Raleway-BoldItalic.ttf */,
+				3BC9340129DAA5BF000B4AA6 /* Raleway-MediumItalic.ttf */,
+				3BC9340229DAA5BF000B4AA6 /* Raleway-ThinItalic.ttf */,
+				3BC9340329DAA5BF000B4AA6 /* Raleway-ExtraLight.ttf */,
+				3BC9340429DAA5BF000B4AA6 /* Raleway-Medium.ttf */,
+				3BC9340529DAA5BF000B4AA6 /* Raleway-SemiBold.ttf */,
+				3BC9340629DAA5BF000B4AA6 /* Raleway-ExtraBold.ttf */,
+				3BC9340729DAA5BF000B4AA6 /* Raleway-ExtraBoldItalic.ttf */,
+				3BC9340929DAA5BF000B4AA6 /* Raleway-ExtraLightItalic.ttf */,
+				3BC9340A29DAA5BF000B4AA6 /* Raleway-SemiBoldItalic.ttf */,
+				3BC9340B29DAA5BF000B4AA6 /* Raleway-Italic-VariableFont_wght.ttf */,
+				3BC9340C29DAA5BF000B4AA6 /* Raleway-Light.ttf */,
+				3BC9340D29DAA5BF000B4AA6 /* Raleway-Black.ttf */,
+				3BC9342E29DAA8EA000B4AA6 /* Raleway-Regular.ttf */,
+				3BC9340E29DAA5BF000B4AA6 /* OFL.txt */,
+				3BC9340F29DAA5BF000B4AA6 /* Raleway-BlackItalic.ttf */,
+				3BC9341029DAA5BF000B4AA6 /* Raleway-VariableFont_wght.ttf */,
+				3BC9341129DAA5BF000B4AA6 /* README.txt */,
+				3BC9341229DAA5BF000B4AA6 /* Raleway-LightItalic.ttf */,
+				3BC9341329DAA5BF000B4AA6 /* Raleway-Thin.ttf */,
+				3BC9341429DAA5BF000B4AA6 /* Raleway-Italic.ttf */,
+				3BC9341529DAA5BF000B4AA6 /* Raleway-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3BC9343129DE7C02000B4AA6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3BC9343829DE7F71000B4AA6 /* scan-barcode.png */,
+				3BC9343229DE7C02000B4AA6 /* shareout.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		754CBDFD66C6B22A56A41C13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BC933B429CD4589000B4AA6 /* AdServices.framework */,
+				3BC933B229CD4583000B4AA6 /* AdSupport.framework */,
+				3BC933B029CD457C000B4AA6 /* CoreServices.framework */,
+				3BC933AE29CD4575000B4AA6 /* SystemConfiguration.framework */,
+				3BC933AC29CD456E000B4AA6 /* CoreSpotlight.framework */,
+				3BC933AA29CD4566000B4AA6 /* CoreTelephony.framework */,
+				3BC933A829CD4560000B4AA6 /* WebKit.framework */,
+				3BC933A629CD4556000B4AA6 /* iAd.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BB67F7BA50C72BFE4488F08 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B5168B829CD1AA6001C1741 /* ios_sample_test_app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B5168CD29CD1AA7001C1741 /* Build configuration list for PBXNativeTarget "ios_sample_test_app" */;
+			buildPhases = (
+				3B5168B529CD1AA6001C1741 /* Sources */,
+				3B5168B629CD1AA6001C1741 /* Frameworks */,
+				3B5168B729CD1AA6001C1741 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ios_sample_test_app;
+			packageProductDependencies = (
+				3B76601F29CD42FD00978C92 /* BranchSDK */,
+			);
+			productName = ios_sample_test_app;
+			productReference = 3B5168B929CD1AA6001C1741 /* ios_sample_test_app.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B5168B129CD1AA6001C1741 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					3B5168B829CD1AA6001C1741 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+				};
+			};
+			buildConfigurationList = 3B5168B429CD1AA6001C1741 /* Build configuration list for PBXProject "ios_sample_test_app" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B5168B029CD1AA6001C1741;
+			packageReferences = (
+				3B76601E29CD42FD00978C92 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */,
+			);
+			productRefGroup = 3B5168BA29CD1AA6001C1741 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B5168B829CD1AA6001C1741 /* ios_sample_test_app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B5168B729CD1AA6001C1741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BC9342029DAA5BF000B4AA6 /* Raleway-SemiBoldItalic.ttf in Resources */,
+				3BC9342B29DAA5BF000B4AA6 /* Raleway-Bold.ttf in Resources */,
+				3BC9341929DAA5BF000B4AA6 /* Raleway-ExtraLight.ttf in Resources */,
+				3BC9342729DAA5BF000B4AA6 /* README.txt in Resources */,
+				3BC9342329DAA5BF000B4AA6 /* Raleway-Black.ttf in Resources */,
+				3B5168D129CD3E64001C1741 /* ios_sample_test_app.entitlements in Resources */,
+				3B5168C929CD1AA7001C1741 /* LaunchScreen.storyboard in Resources */,
+				3BC9342829DAA5BF000B4AA6 /* Raleway-LightItalic.ttf in Resources */,
+				3BC9341629DAA5BF000B4AA6 /* Raleway-BoldItalic.ttf in Resources */,
+				3BC9341A29DAA5BF000B4AA6 /* Raleway-Medium.ttf in Resources */,
+				3BC9342929DAA5BF000B4AA6 /* Raleway-Thin.ttf in Resources */,
+				3BC9343429DE7C02000B4AA6 /* shareout.png in Resources */,
+				3BC9341729DAA5BF000B4AA6 /* Raleway-MediumItalic.ttf in Resources */,
+				3BC9342529DAA5BF000B4AA6 /* Raleway-BlackItalic.ttf in Resources */,
+				3BC9341829DAA5BF000B4AA6 /* Raleway-ThinItalic.ttf in Resources */,
+				3BC9342629DAA5BF000B4AA6 /* Raleway-VariableFont_wght.ttf in Resources */,
+				3BC9342429DAA5BF000B4AA6 /* OFL.txt in Resources */,
+				3B5168C629CD1AA7001C1741 /* Assets.xcassets in Resources */,
+				3BC9342A29DAA5BF000B4AA6 /* Raleway-Italic.ttf in Resources */,
+				3BC9341D29DAA5BF000B4AA6 /* Raleway-ExtraBoldItalic.ttf in Resources */,
+				3B5168C429CD1AA6001C1741 /* Main.storyboard in Resources */,
+				3BC9342129DAA5BF000B4AA6 /* Raleway-Italic-VariableFont_wght.ttf in Resources */,
+				3BC9342229DAA5BF000B4AA6 /* Raleway-Light.ttf in Resources */,
+				3BC9341B29DAA5BF000B4AA6 /* Raleway-SemiBold.ttf in Resources */,
+				3BC9342F29DAA8EA000B4AA6 /* Raleway-Regular.ttf in Resources */,
+				3BC9343929DE7F71000B4AA6 /* scan-barcode.png in Resources */,
+				3BC9341F29DAA5BF000B4AA6 /* Raleway-ExtraLightItalic.ttf in Resources */,
+				3BC9341C29DAA5BF000B4AA6 /* Raleway-ExtraBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B5168B529CD1AA6001C1741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B5168C129CD1AA6001C1741 /* ViewController.swift in Sources */,
+				3B5168BD29CD1AA6001C1741 /* AppDelegate.swift in Sources */,
+				3BC933B729DA220B000B4AA6 /* ColorBlockViewController.swift in Sources */,
+				3B5168BF29CD1AA6001C1741 /* SceneDelegate.swift in Sources */,
+				3BC933B929DA2381000B4AA6 /* ReadDeepLinkViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3B5168C229CD1AA6001C1741 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B5168C329CD1AA6001C1741 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B5168C729CD1AA7001C1741 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B5168C829CD1AA7001C1741 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B5168CB29CD1AA7001C1741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B5168CC29CD1AA7001C1741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B5168CE29CD1AA7001C1741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ios_sample_test_app/ios_sample_test_app.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ios_sample_test_app/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Branch Sample";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Asking permission to send device level information to Branch Dashboard.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchsample-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B5168CF29CD1AA7001C1741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ios_sample_test_app/ios_sample_test_app.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R63EM248DP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ios_sample_test_app/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Branch Sample";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Asking permission to send device level information to Branch Dashboard.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.branchsample-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B5168B429CD1AA6001C1741 /* Build configuration list for PBXProject "ios_sample_test_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B5168CB29CD1AA7001C1741 /* Debug */,
+				3B5168CC29CD1AA7001C1741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B5168CD29CD1AA7001C1741 /* Build configuration list for PBXNativeTarget "ios_sample_test_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B5168CE29CD1AA7001C1741 /* Debug */,
+				3B5168CF29CD1AA7001C1741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B76601E29CD42FD00978C92 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BranchMetrics/ios-branch-sdk-spm";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B76601F29CD42FD00978C92 /* BranchSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B76601E29CD42FD00978C92 /* XCRemoteSwiftPackageReference "ios-branch-sdk-spm" */;
+			productName = BranchSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3B5168B129CD1AA6001C1741 /* Project object */;
+}
